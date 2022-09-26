@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;beans.xml&apos; to &apos;IoC&apos;&#x0A;- Original project: &apos;IoC&apos;&#x0A;- Destination element: &apos;IoC&apos;&#x0A;- Original element: &apos;beans.xml&apos;" description="Copy file" element1="src/main/java/kr/co/softcampus/config/beans.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1664199166546" target="/IoC" units="0" version="1.0"/>
+</session>

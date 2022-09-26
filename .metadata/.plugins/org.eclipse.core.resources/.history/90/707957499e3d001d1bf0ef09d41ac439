@@ -1,0 +1,16 @@
+package kr.co.softcampus.main;
+
+import org.springframework.core.io.ClassPathResource;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	// BeanFactory 사용하기(version 4 이후에는 deprecated)
+	// 패키지 내부에 있을 때
+	public static void test1() {
+		ClassPathResource res = new ClassPathResource("kr/co/softcampus/config/beans.xml");
+	}
+}
