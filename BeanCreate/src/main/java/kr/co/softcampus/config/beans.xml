@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+						
+	<!-- 이 xml이 로딩되는 순간 자동으로 bean 객체가 생성되어 전달된다.(생성자가 실행된다) -->
+	<!-- 현재까지의 내용으로는 id 속성이 없을 때, 객체의 주소값을 받을 수 없다.(자동주입은 이후 학습) -->
+	<bean class="kr.co.softcampus.beans.TestBean" />
+	
+	<!-- .getBean()을 쓰려면 id 속성을 지정해야 한다 -->
+	<!-- 생성된 객체는 더 이상 생성되지 않는다(싱글톤) -->
+	<bean id="test1" class="kr.co.softcampus.beans.TestBean"/>
+	
+	<!-- lazy-init: getBean()메서드를 사용해야만 객체가 생성된다.(생성자 실행) -->
+	<!-- getBean()메서드를 사용하면 싱글톤. 하나의 객체만 생성된다. -->
+	<!-- 생략하면 기본값은 false이므로, xml이 로딩될 때 자동으로 객체가 생성됨. -->
+	<bean id="test2" class="kr.co.softcampus.beans.TestBean" lazy-init="true"/>
+	
+	<!-- scope가 prototype일 때, xml 로딩 시 객체가 생성되지 않는다. -->
+	<!-- .getBean() 메서드를 호출할 때마다 새로운 객체를 생성하여 반환한다.(새로운 주소값이 반환된다) -->
+	<bean id="test3" class="kr.co.softcampus.beans.TestBean" scope="prototype"/>
+</beans>
