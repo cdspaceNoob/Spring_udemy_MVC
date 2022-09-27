@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="greetingKo" class="prac.spring.beans.GreetingKO" />
+	<bean id="greetingEn" class="prac.spring.beans.GreetingEN" />
+	<bean id="greetingKoProto" class="prac.spring.beans.GreetingKO" scope="prototype"/>
+	<bean id="greetingEnProto" class="prac.spring.beans.GreetingEN" scope="prototype"/>
+</beans>
