@@ -6,4 +6,12 @@
 
 	<bean id="t01" class="kr.co.softcampus.beans.TestBean01"
 		lazy-init="true" init-method="bean01_init" />
+
+	<bean id="t02" class="kr.co.softcampus.beans.TestBean02"
+		lazy-init="true" init-method="bean02_init" />
+
+	<!-- id 부여할 필요 없이, Springframework에서 직접 가져와서 쓸 수 있다 -->
+	<!-- init 메서드를 정의하지 않아도 얘는 순서에 따라 아무튼 호출된다 -->
+	<bean class="kr.co.softcampus.processor.TestBeanPostProcessor" />
+
 </beans>
