@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+						
+	<bean id="obj01" class="kr.co.softcampus.beans.TestBean" lazy-init="true"/>
+	
+	
+	<!-- 생성자 파라미터의 타입을 지정해줘야 원하는 생성자를 호출할 수 있다 -->
+	<bean id="obj02" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<!-- 생성자를 통한 의존성 주입 -->
+		<!-- 더 넓은 범위의 데이터타입으로 주입된다 -->
+		<constructor-arg value="100" type="int"/>
+	</bean>
+	
+	<bean id="obj03" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<constructor-arg value="11.11" type="double"/>
+	</bean>
+	
+	<bean id="obj04" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<constructor-arg value="문자열"/>
+	</bean>
+	
+	<bean id="obj05" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<constructor-arg value="200" type="int"/>
+		<constructor-arg value="22.22" type="double"/>
+		<constructor-arg value="안녕하세요" type="java.lang.String"/> 
+	</bean>
+	
+	<!-- 일단 순서가 꼭 맞는 생성자를 찾아보고, 없다면 이 내용을 온전히 주입할 수 있는 생성자를 찾아서 알아서 생성한다 -->
+	<!-- 웬만하면 순서를 지키는 것이 권장된다 -->
+	<bean id="obj06" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<constructor-arg value="안녕하세요" type="java.lang.String"/>
+		<constructor-arg value="300" type="int"/>
+		<constructor-arg value="33.333" type="double"/>
+	</bean>
+	
+	<bean id="obj07" class="kr.co.softcampus.beans.TestBean" lazy-init="true">
+		<constructor-arg value="44.4444" type="double" index="1"/>
+		<constructor-arg value="400" type="int" index="0"/>
+		<constructor-arg value="일치하는 게 좋아요" type="java.lang.String" index="2"/>
+	</bean>
+	
+	<!-- 주입하고 싶은 객체를 class로부터 직접 가져와서 주입하는 방법 -->
+	<bean id="obj08" class="kr.co.softcampus.beans.TestBeanObj" lazy-init="true">
+		<constructor-arg>
+			<bean class="kr.co.softcampus.beans.DataBean"/>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="kr.co.softcampus.beans.DataBean"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 이렇게 주입하고 싶은 객체를 미리 bean으로 만들어 놓고(각각 새로운 객체를 주입해야 하므로 prototype으로 설정 -->
+	<bean id="data_bean" class="kr.co.softcampus.beans.DataBean" scope="prototype"/>
+	
+	<!-- 위에서 이미 정의된 객체를 주입하는 방법도 있다 -->
+	<bean id="obj09" class="kr.co.softcampus.beans.TestBeanObj" lazy-init="true">
+		<constructor-arg ref="data_bean"/>
+		<constructor-arg ref="data_bean"/>
+	</bean>
+	
+</beans>
