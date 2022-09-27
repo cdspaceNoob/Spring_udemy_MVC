@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="default_init" default-destroy-method="default_destroy">
+	<!-- default method는 위와 같이, 위와 같은 위치에 정의한다 -->
+
+	<bean id="t01" class="kr.co.softcampus.beans.TestBean01" lazy-init="true" init-method="bean01_init" destroy-method="bean01_destroy"/>
+	
+	<!-- bean t01과는 달리 t02에는 init-method와 destroy-method를 지정하지 않았다: 이 때는 상기에 명시해둔 default-method가 실행된다 -->
+	<bean id="t02" class="kr.co.softcampus.beans.TestBean02" lazy-init="true"/>
+	
+	<!-- default 메서드가 설정되어 있는 상태에서 bean의 타겟 클래스에도 init 또는 destory 메서드가 정해져 있다면, 타겟 클래스 내부의 init 또는 destroy 메서드가 실행된다 -->
+	<!-- 결국 전체 설정보다 자기 내부 설정이 먼저라는 뜻으로 알면 되겠다 -->
+	<bean id="t03" class="kr.co.softcampus.beans.TestBean03" lazy-init="true" init-method="bean03_init" destroy-method="bean03_destroy"/>
+	
+	<!-- 
+			default-init-method, default-destroy-method: 설정한 메서드가 존재하지 않으면 무시된다(오류 아님)
+			그러나, init-method, destroy-method: 설정한 메서드가 존재하지 않으면 오류가 발생한다
+			아래 t04는, TestBean04에 정의하지 않은 init-method와 destroy-method를 설정했으므로, 오류가 나는 것이 정상이다 
+	 -->
+	<bean id="t04" class="kr.co.softcampus.beans.TestBean04" lazy-init="true" init-method="bean04_init" destroy-method="bean04_destroy"/>
+</beans>
