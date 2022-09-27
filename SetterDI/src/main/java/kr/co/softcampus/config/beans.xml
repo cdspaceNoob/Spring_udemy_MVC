@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+						
+		<bean id="t01" class="kr.co.softcampus.beans.TestBean">
+			<property name="data01" value="100"/>
+			<property name="data02" value="11.11"/>
+			<property name="data03" value="true"/>
+			<property name="data04" value="안녕하세요!"/>
+			<property name="data05">
+				<bean class="kr.co.softcampus.beans.DataBean"/>
+			</property>
+			<property name="data06" ref="data_bean"/>
+		</bean>
+		
+		<bean id="data_bean" class="kr.co.softcampus.beans.DataBean"/>
+		
+</beans>
