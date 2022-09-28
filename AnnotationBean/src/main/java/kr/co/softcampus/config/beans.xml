@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- bean 클래스에 설정되어 있는 어노테이션 사용 -->
+	<context:annotation-config/>
+	
+	<bean id="xml01" class="kr.co.softcampus.beans.TestBean01">
+		<!-- property 태그는 type 속성을 갖지 않는다! -->
+		<property name="data01" value="100"/>
+	</bean>
+	
+	<bean class="kr.co.softcampus.beans.DataBean01"/>
+	
+	<!-- 이름을 통한 주입을 위해 -->
+	<bean id="obj04" class="kr.co.softcampus.beans.DataBean02"/>
+	<bean id="obj05" class="kr.co.softcampus.beans.DataBean02"/>
+	
+</beans>

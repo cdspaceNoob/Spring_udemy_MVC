@@ -12,6 +12,10 @@ public class TestBean01 {
 			this.data03 = data03;
 		}
 		
+		public TestBean01() {
+			
+		}
+		
 		public int getData01() {
 			return data01;
 		}

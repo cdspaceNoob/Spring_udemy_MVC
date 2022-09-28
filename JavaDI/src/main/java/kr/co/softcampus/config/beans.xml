@@ -3,13 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
-						
+	
+	<!-- 생성자를 통한 주입 -->
 	<bean id="xml01" class="kr.co.softcampus.beans.TestBean01" lazy-init="true">
 		<constructor-arg value="100" type="int" index="0"/>
 		<constructor-arg value="문자열" type="java.lang.String" index="1"/>
 		<constructor-arg ref="data_bean01" index="2"/>
 	</bean>
 	
+	<!-- Setter를 통한 주입 -->
+	<bean id="xml02" class="kr.co.softcampus.beans.TestBean01" lazy-init="true">
+		<property name="data01" value="300"/>
+		<property name="data02" value="문자열"/>
+		<property name="data03" ref="data_bean01"/>
+	</bean>
+	
 	<bean id="data_bean01" class="kr.co.softcampus.beans.DataBean01"/>
 	
+	<bean id="data01" class="kr.co.softcampus.beans.DataBean02"/>
+	<bean id="data02" class="kr.co.softcampus.beans.DataBean02"/>
+	
+	<!-- Name으로 자동주입하기: 자동주입은 autowire 설정을 사용한다 -->
+	<bean id="xml03" class="kr.co.softcampus.beans.TestBean02" lazy-init="true" autowire="byName"/>
+	
+	<!-- Type으로 자동주입하기 -->
+	<bean class="kr.co.softcampus.beans.DataBean03"/>
+	
+	<bean id="xml04" class="kr.co.softcampus.beans.TestBean03" autowire="byType"/>
 </beans>
