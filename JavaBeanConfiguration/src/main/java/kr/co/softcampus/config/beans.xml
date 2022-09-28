@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		bean의 id를 정의하는 이유는, 같은 클래스들의 bean을 따로 관리하기 위해서다.
+		만약, 이 xml 파일에 서로 다른 클래스들이 각 하나씩만 존재한다면, id를 지정하지 않아도 된다. 
+	-->
+	<bean id="xml01" class="kr.co.softcampus.beans.TestBean01" />
+	<bean id="xml02" class="kr.co.softcampus.beans.TestBean02" lazy-init="true"/>
+	<bean id="xml03" class="kr.co.softcampus.beans.TestBean03" scope="prototype"/>
+	
+	<bean class="kr.co.softcampus.beans.TestBean04"/>
+	<bean class="kr.co.softcampus.beans.TestBean04" primary="true"/>	<!-- primary는 먼저 정의되었으니 이걸 가져가라는 뜻. -->
+	
+</beans>
