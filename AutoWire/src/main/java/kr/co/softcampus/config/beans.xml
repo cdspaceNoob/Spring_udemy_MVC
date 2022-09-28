@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd"
+						
+	default-autowire="byName">
+
+	<!-- 아래에 정의된 bean을 참조하여 property를 지정한다. -->
+	<bean id="obj01" class="kr.co.softcampus.beans.TestBean01">
+		<property name="data01" ref="data_bean01"/>
+		<property name="data02" ref="data_bean01"/>
+	</bean>
+	
+	<bean id="data_bean01" class="kr.co.softcampus.beans.DataBean01" scope="prototype"/>
+	
+	<bean id="obj02" class="kr.co.softcampus.beans.TestBean01" autowire="byName"/>
+	
+	<bean id="data01" class="kr.co.softcampus.beans.DataBean01"/>
+	<bean id="data02" class="kr.co.softcampus.beans.DataBean01"/>
+	
+	<bean id="obj03" class="kr.co.softcampus.beans.TestBean02" autowire="byType"/>
+	
+	<!-- 타입에 의한 주입은 id를 필요로 하지 않는다. 그저 알맞은 타입이라면 무지성 주입함. -->
+	<!-- <bean class="kr.co.softcampus.beans.DataBean02" scope="prototype"/> -->
+	<bean id="data_bean02" class="kr.co.softcampus.beans.DataBean02" scope="prototype"/>
+	<!-- 동일한 타입의 bean이 두 개 이상 정의되어 있을 때는 자동주입 시 오류가 발생한다. -->
+	<!-- <bean class="kr.co.softcampus.beans.DataBean02"/> -->
+	
+	<!-- 생성자로 주입: 생성자 파라미터 직접 입력 -->
+	<bean id="obj04" class="kr.co.softcampus.beans.TestBean03">
+		<constructor-arg ref="data_bean02" index="0"/>
+		<constructor-arg ref="data_bean02" index="1"/>
+	</bean>
+	
+	<!-- 생성자로 주입: 생성자 자동 주입 -->
+	<bean id="obj05" class="kr.co.softcampus.beans.TestBean03" autowire="constructor"/>
+	
+	<!-- 생성자로 주입: 생성자 파라미터 직접 입력 -->
+	<!-- 객체 타입의 참조변수들은 자동 주입이 가능하지만, 나머지 원시타입은 모두 지정해줘야 한다 -->
+	<bean id="obj06" class="kr.co.softcampus.beans.TestBean03">
+		<constructor-arg value="100" index="0" type="int"/>
+		<constructor-arg value="문자열" index="1" type="java.lang.String"/>
+		<constructor-arg ref="data_bean02" index="2"/>
+		<constructor-arg ref="data_bean02" index="3"/>
+	</bean>
+	
+	<!-- 생성자로 주입: 생성자 자동 주입 -->
+	<!-- 마찬가지로, 원시타입이 하나라도 빠지면 자동 주입이 실행되지 않는다 -->
+	<bean id="obj07" class="kr.co.softcampus.beans.TestBean03" autowire="constructor">
+		<constructor-arg value="200" index="0" type="int"/>
+		<constructor-arg value="문자열입니다" index="1" type="java.lang.String"/>
+	</bean>
+	
+	<bean id="obj08" class="kr.co.softcampus.beans.TestBean01"/>
+	
+	<bean id="obj09" class="kr.co.softcampus.beans.TestBean01" autowire="no"/>
+	
+</beans>
