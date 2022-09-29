@@ -5,7 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 import kr.co.softcampus.beans.DataBean01;
 import kr.co.softcampus.beans.DataBean02;
+import kr.co.softcampus.beans.DataBean03;
+import kr.co.softcampus.beans.DataBean04;
 import kr.co.softcampus.beans.TestBean01;
+import kr.co.softcampus.beans.TestBean02;
 
 @Configuration
 public class BeanConfigClass {
@@ -29,4 +32,10 @@ public class BeanConfigClass {
 	public DataBean02 obj05() {
 		return new DataBean02();
 	}
+	
+	@Bean
+	public TestBean02 java02() {
+		return new TestBean02();
+	}
+	
 }

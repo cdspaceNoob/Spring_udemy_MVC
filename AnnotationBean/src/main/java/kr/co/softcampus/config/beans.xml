@@ -21,4 +21,13 @@
 	<bean id="obj04" class="kr.co.softcampus.beans.DataBean02"/>
 	<bean id="obj05" class="kr.co.softcampus.beans.DataBean02"/>
 	
+	<!-- 생성자 자동주입 -->
+	<bean id="xml02" class="kr.co.softcampus.beans.TestBean02"/>
+	<!-- 
+		맨 위에 context:annotation-config를 선언해 놓았으므로
+		constructor-arg를 설정하지 않았지만, 자동으로 맞는 타입을 찾아서 자동주입이 실행된다.
+		단, 객체만 실행되므로 원시타입(기본 자료형)은 직접 생성자에 값을 기재한다.
+	 -->
+	<bean class="kr.co.softcampus.beans.DataBean03"/>
+	<bean class="kr.co.softcampus.beans.DataBean04"/>
 </beans>

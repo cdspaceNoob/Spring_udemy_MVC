@@ -11,6 +11,8 @@ public class TestBean01 {
 	
 	// 자동주입을 변수에 설정.
 	// 자동으로 setter method가 추가되며, 이를 통해 자동주입이 실행된다.
+	// 단, Autowired를 설정하면, 반드시 해당 bean이 정의되어 있어야 한다.(at BeansConfigClass)
+	// 아 거기 없으면 걍 그 속성은 주입하지마!: required 속성을 false로 설정한다.
 	@Autowired
 	private DataBean01 data03;
 	
@@ -22,6 +24,11 @@ public class TestBean01 {
 	@Qualifier("obj05")
 	private DataBean02 data05;
 	
+	@Autowired(required = false)
+	@Qualifier("obj06")
+	private DataBean02 data06;
+	
+	// GETTERS & SETTERS
 	public int getData01() {
 		return data01;
 	}
@@ -53,8 +60,9 @@ public class TestBean01 {
 	public DataBean02 getData05() {
 		return data05;
 	}
-	
-	
-	
+
+	public DataBean02 getData06() {
+		return data06;
+	} 
 		
 }
