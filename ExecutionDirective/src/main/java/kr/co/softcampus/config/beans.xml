@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+						
+	<bean id="xml01" class="kr.co.softcampus.beans.TestBean01"/>
+	<bean id="xml02" class="kr.co.softcampus.beans.TestBean02"/>
+	<bean id="xml03" class="kr.co.softcampus.beans02.TestBean01"/>
+	
+	<bean id="advisor01" class="kr.co.softcampus.advisor.AdvisorClass"/>
+	
+	<aop:config>
+		<aop:aspect ref="advisor01">
+			<!-- TestBean01의 method01의 실행을 관심사로 설정. -->
+			<!-- 매개변수까지 완벽하게 일치해야 weaving된다. 동일한 메서드라 하더라도 매개변수가 있거나 타입이 다르다거나 이런 것은 모두 차이점으로 취급한다. -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01())"/> -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(int))"/> -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(java.lang.String))"/> -->
+			
+			<!-- 매개 변수의 타입에 관련없이 1개의 매개 변수를 가지는 메서드에 대해 위빙.( '*'를 한 개 써준다) -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(*))"/> -->
+			
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(int, int))"/> -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(int, java.lang.String))"/> -->
+			
+			<!-- 매개 변수가 몇 개든, 어떤 타입이든 모든 메서드에 대해서. -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.method01(..))"/> -->
+			
+			<!-- 모든 메서드에 대해, 매개 변수가 몇 개든, 어떤 타입이든 모든 메서드에 대해서. -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.TestBean01.*(..))"/> -->
+			
+			<!-- 패키지를 포함한 클래스 이름을 일부 변경. 모든 클래스에 대해(클래스 파일의 이름 대신 '*' 적용) -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.*.*(..))"/> -->
+			
+			<!-- 메서드의 이름이 method01인 것만 골라서 weaving할 수도 있다. -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.beans.*.method01(..))"/> -->
+			
+			<!-- 특정 경로의 모든 패키지 내부의 method01() 실행. -->
+			<!-- <aop:pointcut id="point01" expression="execution(void kr.co.softcampus.*.*.method01(..))"/> -->
+			
+			<!-- 모든 패키지를 대상으로 한다면 패키지 부분을 빼면된다. 모든 클래스(*). 모든 메서드(*). -->
+			<!-- <aop:pointcut id="point01" expression="execution(void *.*(..))"/> -->
+			
+			<!-- 반환 타입이 int인 것만 weaving -->
+			<!-- <aop:pointcut id="point01" expression="execution(int *.*(..))"/> -->
+			
+			<!-- 그냥 전부. -->
+			<aop:pointcut id="point01" expression="execution(* *.*(..))"/>
+			
+			<aop:before method="beforeMethod" pointcut-ref="point01"/>
+		</aop:aspect>
+	</aop:config>
+		
+</beans>
