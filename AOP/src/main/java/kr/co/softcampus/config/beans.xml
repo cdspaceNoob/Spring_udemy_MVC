@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Context 설정 추가됨 -->
+<!-- APO 설정 추가됨 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+						
+		<bean id="xml01" class="kr.co.softcampus.beans.TestBean01"/>
+		
+		<bean id="advisor01" class="kr.co.softcampus.advisor.AdvisorClass"/>
+		
+		<aop:config>
+			<aop:aspect ref="advisor01">
+				<!-- pointcut(조건): method01이 실행될 때.  -->
+				<aop:pointcut expression="execution(* method01())" id="point01"/>
+				<!-- pointcut-ref(조건 전에) 실행한다 Advisor01에 등록된(<aop:aspect ref=...>로 정해뒀다) beforeMethod를 -->
+				<aop:before method="beforeMethod" pointcut-ref="point01"/>
+				<aop:after method="afterMethod" pointcut-ref="point01"/>
+				<!-- <aop:around method="aroundMethod" pointcut-ref="point01"/> -->
+				<!-- pointcut이 예외 없이, 모든 코드가 정상적으로 실행되었을 때 after-returning이 실행된다. -->
+				<aop:after-returning method="afterReturningMethod" pointcut-ref="point01"/>
+				<aop:after-throwing method="afterThrowingMethod" pointcut-ref="point01" throwing="e1"/>
+			</aop:aspect>
+		</aop:config>
+		
+</beans>
