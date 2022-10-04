@@ -1,0 +1,10 @@
+package kr.co.softcampus.model;
+
+public class Test02Service {
+
+	public int minus(int number01, int number02) {
+		int result = number01 - number02;
+		return result;
+	}
+	
+}
