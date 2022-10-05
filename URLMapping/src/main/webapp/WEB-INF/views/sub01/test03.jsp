@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>hello Spring MVC</h1>
+<h1>/sub01/test03.jsp 정상 진입!</h1>
 </body>
 </html>
