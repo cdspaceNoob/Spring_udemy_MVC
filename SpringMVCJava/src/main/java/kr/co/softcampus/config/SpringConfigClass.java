@@ -39,7 +39,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 //		AnnotationConfigWebApplicationContext rootAppContext = new AnnotationConfigWebApplicationContext();
 //		rootAppContext.register(RootAppContext.class);
 //		
-//		// 리스터 설정 
+//		// 리스너 설정 
 //		ContextLoaderListener listener = new ContextLoaderListener(rootAppContext);
 //		servletContext.addListener(listener);
 //		
