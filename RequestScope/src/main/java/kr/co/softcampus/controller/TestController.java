@@ -118,4 +118,13 @@ public class TestController {
 		return "result5";
 	}
 	
+	@GetMapping("/result6")
+	public ModelAndView result6 (ModelAndView mav) {
+		
+		mav.addObject("data", "String data");
+		
+		mav.setViewName("result6");
+		return mav;
+	}
+	
 }
