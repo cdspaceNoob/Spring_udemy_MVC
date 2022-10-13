@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 // 여기서 어떤 방법을 사용할지는 개발자의 취향이다.
 // 편한 거 하나 골라서 쓰면 된다.
-// 기능 및 용도는 같기 때문이다.
+// 기능 및 용도는 같기 때문이다. 
 
 @Controller
 public class TestController {
