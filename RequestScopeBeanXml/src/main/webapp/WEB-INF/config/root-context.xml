@@ -4,5 +4,7 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/beans
 							http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- 여기에 Bean 정의. -->
+	<bean class="kr.co.softcampus.beans.DataBean1" scope="request"/>
+
 
 </beans>
