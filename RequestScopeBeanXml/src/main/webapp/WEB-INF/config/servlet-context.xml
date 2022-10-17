@@ -15,6 +15,7 @@
 
 <!-- 스캔할 Bean들이 모여 있는 패키지를 지정한다. -->
 <context:component-scan base-package="kr.co.softcampus.controller"/>
+<context:component-scan base-package="kr.co.softcampus.beans"/>
 
 <!-- Controller의 메서드에서 반환하는 문자 앞 뒤에 붙일 경로를 설정한다. -->
 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

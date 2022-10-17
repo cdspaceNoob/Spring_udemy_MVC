@@ -5,6 +5,7 @@
 							http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- 여기에 Bean 정의. -->
 	<bean class="kr.co.softcampus.beans.DataBean1" scope="request"/>
+	<bean class="kr.co.softcampus.beans.DataBean2" id="requestBean2" scope="request"/> <!-- 이름으로 주입. -->
 
 
 </beans>
