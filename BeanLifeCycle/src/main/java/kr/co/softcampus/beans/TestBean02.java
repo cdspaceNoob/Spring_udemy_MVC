@@ -10,4 +10,5 @@ public class TestBean02 {
 	public void default_destroy() {
 		System.out.println("TestBean02의 default_destroy 실행");
 	}
+	//git branch update Test
 }
