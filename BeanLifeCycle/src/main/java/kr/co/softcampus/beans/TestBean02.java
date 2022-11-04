@@ -9,6 +9,7 @@ public class TestBean02 {
 	}
 	public void default_destroy() {
 		System.out.println("TestBean02의 default_destroy 실행");
+		System.out.println("Junha git pull request 생성 Test");
 	}
 	//git branch update Test
 }
